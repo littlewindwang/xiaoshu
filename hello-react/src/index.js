@@ -2,43 +2,49 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-
-
-class Header extends Component {
-
-
-    renderGoodWord(goodWord,badWord){
-        const isGoodWord = true;
-        return isGoodWord ? goodWord : badWord;
+class LikeButton extends Component{
+    constructor(){
+        super();
+        this.state={
+            isLiked:false
+        }
     }
 
-    con(){
-        console.log('con1111');
-    }
-
-    handleClickOnTitle() {
-        console.log('nidaye');
-        // console.log(e.target);
-         this.con();
+    handleClickOnLikeButton(){
+       console.log("button1");
+       console.log(this);
 
     }
+    handleClickOnLikeButton2(){
+        console.log("button2");
+        console.log(this);
+
+    }
 
 
+    render(){
+        return(
+            <button onClick={()=>{
+                this.handleClickOnLikeButton();
+                this.handleClickOnLikeButton2();
+            }}>
+                {this.state.isLiked?'取消':'点赞'}👍
+            </button>
+        )
+    }
+}
 
-    render() {
+class Index extends Component{
+    render(){
         return (
             <div>
-                <h1 onClick={this.handleClickOnTitle.bind(this)}>React 小书
-                    {
-                        this.renderGoodWord(<strong> is good</strong>,<span> is bad</span>)
-                    }
-                </h1>
+                <LikeButton />
             </div>
         )
     }
 }
 
 ReactDOM.render(
-    <Header/>,
+    <Index />,
     document.getElementById('root')
 )
