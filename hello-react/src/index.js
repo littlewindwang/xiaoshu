@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
+<<<<<<< HEAD
 const users = [
     {username: 'Jerry', age: 21, gender: 'male'},
     {username: 'Tomy', age: 22, gender: 'male'},
@@ -39,12 +40,34 @@ class Index extends Component {
                     console.log(i);
                    return <User user={user} key={i} index={i} />
                 })}
+=======
+
+const users=[
+    { username: 'Jerry', age: 21, gender: 'male' },
+    { username: 'Tomy', age: 22, gender: 'male' },
+    { username: 'Lily', age: 19, gender: 'female' },
+    { username: 'Lucy', age: 20, gender: 'female' }];
+
+
+
+
+
+class Index extends Component {
+    render () {
+        return (
+            <div>
+                {[
+                    <span>React.js </span>,
+                    <span>is </span>,
+                    <span>good</span>
+                ]}
+>>>>>>> b485e0c89391017262a4cc5403e947db6fe0a668
             </div>
         )
     }
 }
 
 ReactDOM.render(
-    <Index/>,
+    <Index />,
     document.getElementById('root')
 );
