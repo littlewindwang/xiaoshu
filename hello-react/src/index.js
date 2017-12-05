@@ -2,136 +2,43 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-class LikeButton extends Component {
-
-    static defaultProps={
-        likedText:'取消',
-        unlikedText:'点赞'
-    }
-
-
-
-    constructor() {
-        super();
-        this.state = {
-            isLiked: false
-        }
-    }
-
-    handleClickOnLikeButton() {
-        this.setState({
-            isLiked: !this.state.isLiked
-        });
-
-        if (this.props.abc) {
-            this.props.abc();
-        }
-
-    }
+const users = [
+    {username: 'Jerry', age: 21, gender: 'male'},
+    {username: 'Tomy', age: 22, gender: 'male'},
+    {username: 'Lily', age: 19, gender: 'female'},
+    {username: 'Lucy', age: 20, gender: 'female'}
+];
 
 
-    render() {
-        return (
-            <button onClick={() => {
-                this.handleClickOnLikeButton();
-            }}>
-                {this.state.isLiked ? this.props.likedText : this.props.unlikedText}👍
-            </button>
+class User extends Component{
+    render(){
+        const {user}=this.props;
+        // const {abc}=this.props;
+        console.log(this.props);
+        // console.log(user);
+        // console.log(abc);
+        return(
+            <div>
+                <div>姓名：{user.username}</div>
+                <div>年龄：{user.age}</div>
+                <div>性别：{user.gender}</div>
+                <hr />
+            </div>
         )
     }
 }
 
+
+
 class Index extends Component {
-
-    constructor(){
-        super();
-        this.state={
-            likedText: '已赞',
-            unlikedText: '赞'
-
-        }
-    }
-
-    handleIndexClick(){
-        this.setState({
-            likedText: '取消',
-            unlikedText: '点赞'
-        });
-    }
-
-
-//
-//     class Computer extends Component {
-//     constructor(){
-//         super();
-//         this.state={status:false}
-//     }
-//
-//     handleComputerClick(){
-//         super();
-//         this.state({
-//             status:!this.state.status
-//         })
-//     }
-//
-//
-//     render () {
-//         return (
-//             <div>
-//                 <button onClick={this.handleComputerClick.bind(this)}>开关</button>
-//             </div>
-//         )
-//     }
-// }
-//
-// class Screen extends Component {
-//     static defaultProps
-//
-//
-//
-//     render () {
-//         return (
-//             <div className='screen'></div>
-//         )
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-render() {
+    render() {
         return (
             <div>
-                <LikeButton
-                    likedText={this.state.likedText}
-                    unlikedText={this.state.unlikedText}
-                    abc={()=>{
-                        console.log(this);
-                    }}
-                />
-
-                <div>
-                    <button onClick={this.handleIndexClick.bind(this)}>
-                        修改显示
-                    </button>
-                </div>
-
+                {users.map((user,i)=> {
+                    // console.log(user);
+                    console.log(i);
+                   return <User user={user} key={i} index={i} />
+                })}
             </div>
         )
     }
@@ -140,4 +47,4 @@ render() {
 ReactDOM.render(
     <Index/>,
     document.getElementById('root')
-)
+);
